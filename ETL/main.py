@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 
-CollegeScorecard_df_raw = pd.read_csv("YourCollegeData.csv")
+CollegeScorecard_df_raw = pd.read_csv("generated_data/ScorecardData.csv")
 scard_df = CollegeScorecard_df_raw.copy()
 scard_df = scard_df.rename(
     columns={

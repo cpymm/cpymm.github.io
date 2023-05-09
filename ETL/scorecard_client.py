@@ -1,5 +1,7 @@
 import pandas as pd
 import requests
+from pathlib import Path  
+
 
 import json
 from bs4 import BeautifulSoup
@@ -78,8 +80,9 @@ class CollegeScorecardClient:
         combined_df = pd.DataFrame()
 
         if frames:
+            filepath = Path("generated_data/ScorecardData.csv")
             combined_df = pd.concat(frames).sort_values(by=["year", "school.name"]).reset_index(drop=True)
-            combined_df.to_csv("YourCollegeData.csv", index=False)
+            combined_df.to_csv(filepath, index=False)
 
         report = DataResult(combined_df, self.reqs, self.errors, expected_rows - combined_df.shape[0])
         self.reqs = 0
