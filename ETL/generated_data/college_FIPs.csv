@@ -1,60 +1,139 @@
 name,state,county,cbsa,puma
-Boston College,25,017,14460,613
-Boston University,25,025,14460,805
-Northeastern University,25,025,14460,805
-University of California-Berkeley,06,001,41860,112
-University of Michigan-Ann Arbor,26,161,11460,2702
-Boston University,25,025,14460,801
-Brandeis University,25,017,14460,613
-California Institute of Technology,06,037,31080,3718
-Carnegie Mellon University,42,003,38300,1701
-University of Pittsburgh-Pittsburgh Campus,42,003,38300,1701
-Case Western Reserve University,39,035,17460,709
-Case Western Reserve University,39,035,17460,708
-Clark University,25,027,49340,505
-Clark University,25,027,49340,504
-Worcester Polytechnic Institute,25,027,49340,505
-Clark University,25,027,49340,506
-Dartmouth College,33,009,30100,100
-Harvard University,25,017,14460,610
-Harvard University,25,017,14460,611
-Massachusetts Institute of Technology,25,017,14460,611
-Harvard University,25,017,14460,612
-Johns Hopkins University,24,510,12580,802
+American University,11,1,47900,101
+Auburn University,1,81,12220,2101
+Auburn University,1,81,10760,2101
+Baylor University,48,309,47380,3801
+Binghamton University,36,7,13780,2201
+Binghamton University,36,7,13780,2204
+Boston College,25,17,14460,613
+Boston University,25,25,14460,801
+Northeastern University,25,25,14460,801
+Boston University,25,25,14460,805
+Northeastern University,25,25,14460,805
+Boston University,25,25,14460,804
+Northeastern University,25,25,14460,804
+Brandeis University,25,17,14460,613
+Brigham Young University,49,49,39340,49003
+California Institute of Technology,6,37,31080,3718
+Carnegie Mellon University,42,3,38300,1701
+University of Pittsburgh-Pittsburgh Campus,42,3,38300,1701
+Case Western Reserve University,39,35,17460,709
+Case Western Reserve University,39,35,17460,708
+Clark University,25,27,49340,505
+Clark University,25,27,49340,504
+Worcester Polytechnic Institute,25,27,49340,505
+Clark University,25,27,49340,506
+Clemson University,45,77,24860,101
+Colorado School of Mines,8,59,19740,401
+Colorado School of Mines,8,59,19740,702
+Colorado School of Mines,8,59,19740,703
+Columbia University in the City of New York,36,61,35620,4109
+Columbia University in the City of New York,36,61,35620,4110
+Cornell University,36,109,27060,2300
+Dartmouth College,33,9,30100,100
+Duke University,37,63,20500,1302
+Duke University,37,63,20500,1301
+Elon University,37,1,15500,1600
+Elon University,37,1,24660,1600
+Elon University,37,1,99999,1600
+Florida State University,12,73,45220,7302
+Fordham University,36,5,35620,4207
+Fordham University,36,5,35620,4263
+Fordham University,36,5,35620,4205
+George Washington University,11,1,47900,106
+Georgetown University,11,1,47900,101
+Georgia Institute of Technology-Main Campus,13,121,12060,1404
+Georgia Institute of Technology-Main Campus,13,121,12060,1406
+Harvard University,25,17,14460,610
+Harvard University,25,17,14460,611
+Massachusetts Institute of Technology,25,17,14460,611
+Harvard University,25,17,14460,612
+Howard University,11,1,47900,105
+Indiana University-Bloomington,18,105,14020,2900
 Johns Hopkins University,24,510,12580,803
-Loyola Marymount University,06,037,31080,3748
-Loyola Marymount University,06,037,31080,3778
-Marquette University,55,079,33340,2805
-Marquette University,55,079,33340,2803
-Massachusetts Institute of Technology,25,017,14460,610
-Northwestern University,17,031,16980,3107
-Pepperdine University,06,037,31080,3774
+Johns Hopkins University,24,510,12580,802
+Johns Hopkins University,24,510,12580,804
+Johns Hopkins University,24,510,12580,805
+Lehigh University,42,77,10900,2802
+Loyola Marymount University,6,37,31080,3748
+Loyola Marymount University,6,37,31080,3778
+Marquette University,55,79,33340,2805
+Marquette University,55,79,33340,2803
+Massachusetts Institute of Technology,25,17,14460,610
+New Jersey Institute of Technology,34,13,35620,1407
+New Jersey Institute of Technology,34,13,35620,1406
+New York University,36,61,35620,4121
+Northeastern University,25,25,14460,802
+Northwestern University,17,31,16980,3107
+Pepperdine University,6,37,31080,3774
+Princeton University,34,21,45940,2302
+Purdue University-Main Campus,18,157,29200,1200
+Rensselaer Polytechnic Institute,36,83,10580,1900
 Rice University,48,201,26420,4604
 Rice University,48,201,26420,4603
-Santa Clara University,06,085,41940,8517
-Stanford University,06,085,41940,8515
-Tufts University,25,017,14460,609
-Tufts University,25,017,14460,610
-Tufts University,25,017,14460,607
-University of California-Berkeley,06,001,41860,101
-University of California-Los Angeles,06,037,31080,3776
-University of California-Santa Cruz,06,087,42100,8702
-University of Chicago,17,031,16980,3165
-University of Chicago,17,031,16980,3161
-University of Chicago,17,031,16980,3168
-University of Connecticut,09,013,25540,20203
-University of Georgia,13,059,12020,1800
-University of Illinois Chicago,17,031,16980,3159
-University of Illinois Chicago,17,031,16980,3160
-University of Maryland-College Park,24,033,47900,1101
-University of Massachusetts-Amherst,25,015,44140,301
-University of Miami,12,086,33100,8616
+Rutgers University-New Brunswick,34,23,35620,906
+Santa Clara University,6,85,41940,8517
+Stanford University,6,85,41940,8515
+Stevens Institute of Technology,34,17,35620,603
+Syracuse University,36,67,45060,703
+Syracuse University,36,67,45060,701
+The University of Texas at Austin,48,453,12420,5306
+Tufts University,25,17,14460,609
+Tufts University,25,17,14460,610
+Tufts University,25,17,14460,607
+Tulane University of Louisiana,22,71,35380,2403
+Tulane University of Louisiana,22,71,35380,2401
+Tulane University of Louisiana,22,71,35380,2402
+University at Buffalo,36,29,15380,1202
+University of California-Berkeley,6,1,41860,101
+University of California-Berkeley,6,1,41860,112
+University of California-Davis,6,113,46700,11302
+University of California-Davis,6,113,40900,11302
+University of California-Davis,6,113,46700,11301
+University of California-Davis,6,113,40900,11301
+University of California-Irvine,6,59,31080,5924
+University of California-Los Angeles,6,37,31080,3776
+University of California-Merced,6,47,32900,4702
+University of California-San Diego,6,73,41740,7310
+University of California-San Diego,6,73,41740,7312
+University of California-Santa Cruz,6,87,42100,8702
+University of Chicago,17,31,16980,3165
+University of Chicago,17,31,16980,3161
+University of Chicago,17,31,16980,3168
+University of Colorado Boulder,8,13,14500,502
+University of Connecticut,9,13,25540,20203
+University of Delaware,10,3,37980,104
+University of Florida,12,1,23540,101
+University of Georgia,13,59,12020,1800
+University of Illinois Chicago,17,31,16980,3159
+University of Illinois Chicago,17,31,16980,3160
+University of Illinois Urbana-Champaign,17,19,16580,1901
+University of Iowa,19,103,26980,1100
+University of Maryland-College Park,24,33,47900,1101
+University of Massachusetts-Amherst,25,15,44140,301
+University of Miami,12,86,33100,8614
+University of Miami,12,86,33100,8616
+University of Michigan-Ann Arbor,26,161,11460,2702
 University of Michigan-Ann Arbor,26,161,11460,2703
-University of Minnesota-Twin Cities,27,053,33460,1609
-University of Southern California,06,037,31080,3746
-University of Southern California,06,037,31080,3744
-University of Southern California,06,037,31080,3745
-Villanova University,42,045,37980,3311
+University of Minnesota-Twin Cities,27,53,33460,1609
+University of Notre Dame,18,141,43780,401
+University of Pennsylvania,42,101,37980,3227
+University of Pennsylvania,42,101,37980,3229
+University of San Diego,6,73,41740,7310
+University of San Diego,6,73,41740,7316
+University of San Diego,6,73,41740,7315
+University of South Florida,12,57,45300,5705
+University of Southern California,6,37,31080,3746
+University of Southern California,6,37,31080,3744
+University of Southern California,6,37,31080,3745
+University of Virginia-Main Campus,51,540,16820,54001
+University of Wisconsin-Madison,55,25,31540,2101
+Vanderbilt University,47,37,34980,2401
+Villanova University,42,45,37980,3311
+Virginia Polytechnic Institute and State University,51,121,13980,12100
+Wake Forest University,37,67,49180,1801
+Wake Forest University,37,67,49180,1803
 Washington University in St Louis,29,510,41180,2001
 William & Mary,51,830,47260,9500
-Yale University,09,009,35300,20601
+Yale University,9,9,35300,20601
+Yeshiva University,36,61,35620,4112
