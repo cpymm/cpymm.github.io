@@ -34,8 +34,8 @@ recent_sample["county_fips"] = recent_sample.apply(lambda row:
 )
 school_df = recent_sample
 
-matching_zips_cbsas_df = school_df.merge(zip_cbsa_tract_df[['zip', 'tract', 'cbsa']], left_on='school.zip', right_on='zip')[['school.name', 'zip', 'tract', 'cbsa', 'year', 'school.state_fips', 'county_fips']]
-matching_zips_cbsas_df.columns = ['name', 'zip', 'tract', 'cbsa', 'year', 'desired_state', 'desired_county']
+matching_zips_cbsas_df = school_df.merge(zip_cbsa_tract_df[['zip', 'tract', 'cbsa']], left_on='school.zip', right_on='zip')[['school.name', "id",'zip', 'tract', 'cbsa', 'year', 'school.state_fips', 'county_fips']]
+matching_zips_cbsas_df.columns = ['name', 'id','zip', 'tract', 'cbsa', 'year', 'desired_state', 'desired_county']
 matching_zips_cbsas_df["desired_state"] = matching_zips_cbsas_df['desired_state'].astype(str).str.zfill(2)
 matching_zips_cbsas_df["desired_county"] = matching_zips_cbsas_df['desired_county'].astype(str).str.zfill(3)
 
@@ -61,6 +61,6 @@ tract_puma_df['tract'] = tract_puma_df['tract'].astype(int)
 final_df = pd.merge(match_df, tract_puma_df, how="inner", on=["state","county","tract"])
 final_df = final_df.drop(columns=['desired_state','desired_county', 'year'])
 
-out_df = final_df[["name","state","county", "cbsa","puma"]].copy().drop_duplicates()
+out_df = final_df[["name","id","state","county", "cbsa","puma"]].copy().drop_duplicates()
 filepath = Path("generated_data/college_FIPs.csv")
 out_df.to_csv(filepath, index=False)

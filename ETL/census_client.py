@@ -42,8 +42,8 @@ zip_cbsa_tract_df = pd.read_csv('generated_data/ZipToCBSATract.csv')
 school_df['school.zip'] = school_df['school.zip'].astype(str).str.slice(0,5).astype('int64')
 school_df.sort_values('school.zip')
 
-matching_zips_cbsas_df = school_df.merge(zip_cbsa_tract_df[['zip', 'tract', 'cbsa']], left_on='school.zip', right_on='zip')[['school.name', 'zip', 'tract', 'cbsa', 'year', 'school.state_fips', 'county_fips']]
-matching_zips_cbsas_df.columns = ['name', 'zip', 'tract', 'cbsa', 'year', 'desired_state', 'desired_county']
+matching_zips_cbsas_df = school_df.merge(zip_cbsa_tract_df[['zip', 'tract', 'cbsa']], left_on='school.zip', right_on='zip')[['school.name','id', 'zip', 'tract', 'cbsa', 'year', 'school.state_fips', 'county_fips']]
+matching_zips_cbsas_df.columns = ['name', 'id', 'zip', 'tract', 'cbsa', 'year', 'desired_state', 'desired_county']
 matching_zips_cbsas_df["desired_state"] = matching_zips_cbsas_df['desired_state'].astype(str).str.zfill(2)
 matching_zips_cbsas_df["desired_county"] = matching_zips_cbsas_df['desired_county'].astype(str).str.zfill(3)
 
