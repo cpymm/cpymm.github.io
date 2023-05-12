@@ -6,9 +6,17 @@ from pathlib import Path
 with open('census_api_key.txt') as key:
     api_key = key.read().strip()
     
-# Go from school zips to tracts and MSAs/CBSAs
 school_df = pd.read_csv('generated_data/ScorecardData.csv')
-recent_sample = school_df[school_df["year"] == 2019].copy()
+zip_cbsa_tract_df = pd.read_csv('generated_data/ZipToCBSATract.csv')
+
+tract_puma_df = pd.read_table("source_data/2020_Census_Tract_to_2020_PUMA.txt", sep=",").astype('string')
+tract_puma_df.sort_values('TRACTCE')
+tract_puma_df.columns = ['state', 'county', 'tract', 'puma']
+
+school_df['school.zip'] = school_df['school.zip'].str.slice(0,5).astype('int64')
+school_df.sort_values('school.zip')
+
+recent_sample = school_df[school_df["year"] == 2020].copy()
 desired_counties = [
     "001", "081", "309", "007", "017", "025", "017", "049", "044", "037",
     "003", "035", "027", "077", "059", "061", "109", "009", "063", "001", 
@@ -36,20 +44,33 @@ school_df.sort_values('school.zip')
 
 matching_zips_cbsas_df = school_df.merge(zip_cbsa_tract_df[['zip', 'tract', 'cbsa']], left_on='school.zip', right_on='zip')[['school.name', 'zip', 'tract', 'cbsa', 'year', 'school.state_fips', 'county_fips']]
 matching_zips_cbsas_df.columns = ['name', 'zip', 'tract', 'cbsa', 'year', 'desired_state', 'desired_county']
-matching_zips_cbsas_df['state'] = matching_zips_cbsas_df['tract'].astype('string').str.slice(0,2)
-matching_zips_cbsas_df['county'] = matching_zips_cbsas_df['tract'].astype('string').str.slice(2,5)
+matching_zips_cbsas_df["desired_state"] = matching_zips_cbsas_df['desired_state'].astype(str).str.zfill(2)
+matching_zips_cbsas_df["desired_county"] = matching_zips_cbsas_df['desired_county'].astype(str).str.zfill(3)
+
+
+matching_zips_cbsas_df['tract'] = matching_zips_cbsas_df['tract'].astype(str).str.zfill(11)
+matching_zips_cbsas_df['state'] = matching_zips_cbsas_df['tract'].astype('string').str.slice(0,2).str.zfill(2)
+matching_zips_cbsas_df['county'] = matching_zips_cbsas_df['tract'].astype('string').str.slice(2,5).str.zfill(3)
+# print(matching_zips_cbsas_df[matching_zips_cbsas_df['name'] == "Auburn University"])
+
 matching_zips_cbsas_df['tract'] = matching_zips_cbsas_df['tract'].astype('string').str.slice(5,11)
-matching_zips_cbsas_df.sort_values('tract')
+# print(matching_zips_cbsas_df[matching_zips_cbsas_df['name'] == "Auburn University"])
 
-print(matching_zips_cbsas_df)
+match_df = matching_zips_cbsas_df[(matching_zips_cbsas_df["desired_state"] == matching_zips_cbsas_df["state"]) & (matching_zips_cbsas_df["desired_county"] == matching_zips_cbsas_df["county"])].drop_duplicates().copy()
+match_df['state'] = match_df['state'].astype(int)
+match_df['county'] = match_df['county'].astype(int)
+match_df['tract'] = match_df['tract'].astype(int)
 
-# Get state and PUMA from tracts
-tract_puma_df = pd.read_table("source_data/2020_Census_Tract_to_2020_PUMA.txt", sep=",").astype('string')
-tract_puma_df.sort_values('TRACTCE')
-final_df = matching_zips_cbsas_df.merge(tract_puma_df, left_on='tract', right_on='TRACTCE')
-final_df['state'] = final_df['STATEFP'].str.zfill(2)
-final_df['county'] = final_df['COUNTYFP'].str.zfill(3)
-final_df['puma'] = final_df['PUMA5CE']
+
+tract_puma_df['state'] = tract_puma_df['state'].astype(int)
+tract_puma_df['county'] = tract_puma_df['county'].astype(int)
+tract_puma_df['tract'] = tract_puma_df['tract'].astype(int)
+
+final_df = pd.merge(match_df, tract_puma_df, how="inner", on=["state","county","tract"])
+final_df = final_df.drop(columns=['desired_state','desired_county', 'year'])
+final_df['state'] = final_df['state'].astype(str).str.zfill(2)
+final_df['county'] = final_df['county'].astype(str).str.zfill(3)
+final_df['puma'] = final_df['puma'].astype(str)
 final_df = final_df.drop(columns=['STATEFP', 'COUNTYFP', 'TRACTCE', 'PUMA5CE'])
 final_df = final_df[(final_df['state'].astype('int64') == final_df['desired_state'].astype('int64')) & (final_df['county'].astype('int64') == final_df['desired_county'].astype('int64'))].reset_index(drop=True)
 final_df = final_df.drop(columns=['desired_state','desired_county'])
