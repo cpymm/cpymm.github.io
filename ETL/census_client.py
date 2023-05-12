@@ -39,7 +39,7 @@ school_df["county_fips"] = school_df.apply(lambda row:
 )
 
 zip_cbsa_tract_df = pd.read_csv('generated_data/ZipToCBSATract.csv')
-school_df['school.zip'] = school_df['school.zip'].str.slice(0,5).astype('int64')
+school_df['school.zip'] = school_df['school.zip'].astype(str).str.slice(0,5).astype('int64')
 school_df.sort_values('school.zip')
 
 matching_zips_cbsas_df = school_df.merge(zip_cbsa_tract_df[['zip', 'tract', 'cbsa']], left_on='school.zip', right_on='zip')[['school.name', 'zip', 'tract', 'cbsa', 'year', 'school.state_fips', 'county_fips']]
@@ -71,15 +71,12 @@ final_df = final_df.drop(columns=['desired_state','desired_county', 'year'])
 final_df['state'] = final_df['state'].astype(str).str.zfill(2)
 final_df['county'] = final_df['county'].astype(str).str.zfill(3)
 final_df['puma'] = final_df['puma'].astype(str)
-final_df = final_df.drop(columns=['STATEFP', 'COUNTYFP', 'TRACTCE', 'PUMA5CE'])
-final_df = final_df[(final_df['state'].astype('int64') == final_df['desired_state'].astype('int64')) & (final_df['county'].astype('int64') == final_df['desired_county'].astype('int64'))].reset_index(drop=True)
-final_df = final_df.drop(columns=['desired_state','desired_county'])
 
 # Get data I need from my final dataframe
 years = [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
-states = ','.join(pd.unique(final_df['state'].astype('string')).tolist())
+states = ','.join(pd.unique(final_df['state'].astype('string')))
 pumas = final_df['puma'].astype('string')
-msas = ','.join(pd.unique(final_df['cbsa'].astype('string')).tolist())
+msas = ','.join(pd.unique(final_df['cbsa'].astype('string')))
 
 for year in years:
     # Create PUMA dataframe
@@ -92,7 +89,7 @@ for year in years:
     data_url = f'{base_url}?get={cols}&for=public%20use%20microdata%20area:*&in=state:{state}&key={api_key}'
 
     puma_response = requests.get(data_url)
-    puma_df = pd.read_csv(io.StringIO(puma_response.content.decode('utf-8')), on_bad_lines='skip')
+    puma_df = pd.read_csv(io.StringIO(puma_response.content.decode('utf-8')))
     puma_df = puma_df.drop(puma_df.columns[4], axis=1)
     puma_df.columns = "median_household_income", "median_monthly_rent", "state_id", "puma"
     puma_df["median_household_income"] = puma_df["median_household_income"].map(lambda i: ''.join([x for x in  i if x.isdigit()]))
